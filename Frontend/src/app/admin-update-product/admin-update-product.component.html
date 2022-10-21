@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form #myform="ngForm" method="post" class="container col-md-4">
+        <div class="form-group row mb-3 mt-3">
+            <label>Product Name:</label><input type="text" name="productName" #userNameControl="ngModel" required [(ngModel)]="productData.productName">
+            <span style="color:red;" *ngIf="userNameControl.touched && userNameControl.invalid">Name is required</span>
+        </div>
+        <div class="form-group row mb-3 mt-3">
+            <label>Product Price:</label><input type="number" name="productPrice" #userPasswordControl="ngModel" required [(ngModel)]="productData.productPrice">
+            <span style="color:red;" *ngIf="userPasswordControl.touched && userPasswordControl.invalid">Price is required</span>
+        </div>
+        <div class="form-group row mb-3 mt-3">
+            <label>Quantity:</label><input type="number" name="productQuantity" #userEmailControl="ngModel" required [(ngModel)]="productData.productQuantity">
+            <span style="color:red;" *ngIf="userEmailControl.touched && userEmailControl.invalid">Quantity is required</span>
+        </div>
+        <div class="form-group row mb-3 mt-3">
+            <label>Image:</label><input type="text" name="productImage" #userAddressControl="ngModel" required [(ngModel)]="productData.productImage">
+            <span style="color:red;" *ngIf="userAddressControl.touched && userAddressControl.invalid">Image is required</span>
+        </div>
+        <button type="submit" [disabled]="myform.invalid" (click)="updateProductData(myform.value)" class="btn btn-lg form-control btn-primary">Update</button>
+    </form>
+</body>
+</html>

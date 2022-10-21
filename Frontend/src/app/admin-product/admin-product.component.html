@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Product</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="adminproduct">Display<span class="sr-only">*</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="adminaddproduct">Add</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+    <!--<button type="button" routerLink="adminaddproduct">Add Product</button>
+    <button type="button" routerLink="" id="logout">Logout</button>
+    <br>!-->
+    <div class="container">
+
+        <!-- Card deck -->
+        <div class="card-deck row">
+        
+          <div *ngFor="let p of products" class="col-xs-12 col-sm-6 col-md-4">
+          <!-- Card -->
+          <div class="card">
+        
+            <!--Card image-->
+            <div class="view overlay">
+              <img class="card-img-top" src="{{'../assets/'+p.productImage}}" alt={{p.productName}}>
+              <a href="#!">
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+        
+            <!--Card content-->
+            <div class="card-body">
+        
+              <!--Title-->
+              <h3 class="card-title">{{p.productName}}</h3>
+              <!--Text-->
+              <h4 class="card-text">Price: {{p.productPrice | currency: 'INR'}}<br>Quantity: {{p.productQuantity}}</h4>
+              <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+              <button type="button" class="btn btn-primary btn-sm" routerLink="/adminupdateproduct/{{p.productID}}">Update</button>
+              <button type="button" class="btn btn-primary btn-sm mr-1" (click)="deleteProduct(p)">Delete</button>
+        
+            </div>
+        
+          </div>
+          <!-- Card -->
+          </div>
+        
+        
+          
+        </div>
+        <!-- Card deck -->
+          
+        </div>
+        <br><br>
+    <footer>
+        <p>Copyrights 2022</p>
+      </footer>
+    
+</body>
+</html>

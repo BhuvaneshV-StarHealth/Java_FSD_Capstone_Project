@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+</head>
+<body>
+    <form #myform="ngForm" method="post" class="container col-md-4">
+        <div class="form-group row mb-3 mt-3">
+            <label class="col-sm-2 col-form-label">Email:</label><input type="email" class="form-control" name="userEmail" #userEmailControl="ngModel" required ngModel>
+            <span style="color:red;" *ngIf="userEmailControl.touched && userEmailControl.invalid">Email id is required</span>
+        </div>
+        <div class="form-group row mb-3 mt-3">
+            <label class="col-sm-2 col-form-label">Password:</label><input class="form-control" type="password" name="userPassword" #userPasswordControl="ngModel" required ngModel>
+            <span style="color:red;" *ngIf="userPasswordControl.touched && userPasswordControl.invalid">Password is required</span>
+        </div>
+        <div class="form-group row mb-3 mt-3">
+            <label class="col-sm-2 col-form-label">Role:</label>
+            <select name="userRole" class="form-control" #userRoleControl="ngModel" required ngModel>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+            </select>
+            <span style="color:red;" *ngIf="userRoleControl.touched && userRoleControl.invalid">Role is required</span>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-6">
+            <button type="submit" [disabled]="myform.invalid" (click)="userLoginData(myform)" class="btn form-control btn-primary">Login</button>
+            </div>
+            <div class="col-md-6">
+            <button type="button" routerLink="register" class="btn form-control btn-primary ">New User</button>
+            </div>
+        </div>
+    </form>
+    <br><br>
+    <footer>
+        <p>Copyrights 2022</p>
+        <p></p>
+      </footer>
+</body>
+</html>
